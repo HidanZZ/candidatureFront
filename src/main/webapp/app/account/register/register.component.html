@@ -3,13 +3,11 @@
     <div class="col-md-8">
       <h1 data-cy="registerTitle">Registration</h1>
 
-      <div class="alert alert-success" *ngIf="success"><strong>Registration saved!</strong> Please check your email for confirmation.</div>
+      <div class="alert alert-success" *ngIf="success">
+        <strong>Registration saved!</strong> click <a href="#" [routerLink]="['/login']"><strong>>HERE<</strong></a> to sign in
+      </div>
 
       <div class="alert alert-danger" *ngIf="error"><strong>Registration failed!</strong> Please try again later.</div>
-
-      <div class="alert alert-danger" *ngIf="errorUserExists">
-        <strong>Login name already registered!</strong> Please choose another one.
-      </div>
 
       <div class="alert alert-danger" *ngIf="errorEmailExists"><strong>Email is already in use!</strong> Please choose another one.</div>
 
@@ -21,35 +19,53 @@
     <div class="col-md-8">
       <form name="form" role="form" (ngSubmit)="register()" [formGroup]="registerForm" *ngIf="!success">
         <div class="form-group">
-          <label class="form-control-label" for="login">Username</label>
-          <input
-            type="text"
-            class="form-control"
-            id="login"
-            name="login"
-            placeholder="Your username"
-            formControlName="login"
-            data-cy="username"
-            #login
-          />
+          <label class="form-control-label" for="nom">Nom</label>
+          <input type="text" class="form-control" id="nom" name="nom" placeholder="Votre nom" formControlName="nom" data-cy="nom" #nom />
 
-          <div *ngIf="registerForm.get('login')!.invalid && (registerForm.get('login')!.dirty || registerForm.get('login')!.touched)">
-            <small class="form-text text-danger" *ngIf="registerForm.get('login')?.errors?.required"> Your username is required. </small>
+          <div *ngIf="registerForm.get('nom')!.invalid && (registerForm.get('nom')!.dirty || registerForm.get('nom')!.touched)">
+            <small class="form-text text-danger" *ngIf="registerForm.get('nom')?.errors?.required"> Your username is required. </small>
 
-            <small class="form-text text-danger" *ngIf="registerForm.get('login')?.errors?.minlength">
+            <small class="form-text text-danger" *ngIf="registerForm.get('nom')?.errors?.minlength">
               Your username is required to be at least 1 character.
             </small>
 
-            <small class="form-text text-danger" *ngIf="registerForm.get('login')?.errors?.maxlength">
+            <small class="form-text text-danger" *ngIf="registerForm.get('nom')?.errors?.maxlength">
               Your username cannot be longer than 50 characters.
             </small>
 
-            <small class="form-text text-danger" *ngIf="registerForm.get('login')?.errors?.pattern">
+            <small class="form-text text-danger" *ngIf="registerForm.get('nom')?.errors?.pattern">
               Your username can only contain letters and digits.
             </small>
           </div>
         </div>
+        <div class="form-group">
+          <label class="form-control-label" for="prenom">prenom</label>
+          <input
+            type="text"
+            class="form-control"
+            id="prenom"
+            name="prenom"
+            placeholder="Votre prenom"
+            formControlName="prenom"
+            data-cy="prenom"
+          />
 
+          <div *ngIf="registerForm.get('prenom')!.invalid && (registerForm.get('prenom')!.dirty || registerForm.get('prenom')!.touched)">
+            <small class="form-text text-danger" *ngIf="registerForm.get('prenom')?.errors?.required"> Your username is required. </small>
+
+            <small class="form-text text-danger" *ngIf="registerForm.get('prenom')?.errors?.minlength">
+              Your username is required to be at least 1 character.
+            </small>
+
+            <small class="form-text text-danger" *ngIf="registerForm.get('prenom')?.errors?.maxlength">
+              Your username cannot be longer than 50 characters.
+            </small>
+
+            <small class="form-text text-danger" *ngIf="registerForm.get('prenom')?.errors?.pattern">
+              Your username can only contain letters and digits.
+            </small>
+          </div>
+        </div>
         <div class="form-group">
           <label class="form-control-label" for="email">Email</label>
           <input
@@ -76,7 +92,36 @@
             </small>
           </div>
         </div>
+        <div class="form-group" *ngIf="authority == 'ROLE_ECOLE'">
+          <label class="form-control-label" for="nom de l'ecole">nom de l'ecole</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nom de l'ecole"
+            name="nom de l'ecole"
+            placeholder="Your nom de l'ecole"
+            formControlName="ecole"
+            data-cy="nom de l'ecole"
+          />
 
+          <div *ngIf="registerForm.get('ecole')!.invalid && (registerForm.get('ecole')!.dirty || registerForm.get('ecole')!.touched)">
+            <small class="form-text text-danger" *ngIf="registerForm.get('ecole')?.errors?.required">
+              Your nom de l'ecole is required.
+            </small>
+
+            <small class="form-text text-danger" *ngIf="registerForm.get('ecole')?.errors?.invalid">
+              Your nom de l'ecole is invalid.
+            </small>
+
+            <small class="form-text text-danger" *ngIf="registerForm.get('ecole')?.errors?.minlength">
+              Your nom de l'ecole is required to be at least 5 characters.
+            </small>
+
+            <small class="form-text text-danger" *ngIf="registerForm.get('ecole')?.errors?.maxlength">
+              Your nom de l'ecole cannot be longer than 100 characters.
+            </small>
+          </div>
+        </div>
         <div class="form-group">
           <label class="form-control-label" for="password">New password</label>
           <input
@@ -141,14 +186,14 @@
         <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary" data-cy="submit">Register</button>
       </form>
 
-      <div class="mt-3 alert alert-warning">
-        <span>If you want to </span>
-        <a class="alert-link" routerLink="/login">sign in</a
-        ><span
-          >, you can try the default accounts:<br />- Administrator (login="admin" and password="admin") <br />- User (login="user" and
-          password="user").</span
-        >
-      </div>
+      <!--      <div class="mt-3 alert alert-warning">-->
+      <!--        <span>If you want to </span>-->
+      <!--        <a class="alert-link" routerLink="/login">sign in</a-->
+      <!--        ><span-->
+      <!--          >, you can try the default accounts:<br />- Administrator (login="admin" and password="admin") <br />- User (login="user" and-->
+      <!--          password="user").</span-->
+      <!--        >-->
+      <!--      </div>-->
     </div>
   </div>
 </div>

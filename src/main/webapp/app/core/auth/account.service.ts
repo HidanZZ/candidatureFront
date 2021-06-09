@@ -34,10 +34,14 @@ export class AccountService {
     if (!this.userIdentity) {
       return false;
     }
+    // eslint-disable-next-line no-console
+    console.log(this.userIdentity.authorities);
     if (!Array.isArray(authorities)) {
       authorities = [authorities];
     }
-    return this.userIdentity.authorities.some((authority: string) => authorities.includes(authority));
+
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    return this.userIdentity.authorities.some((authority: any) => authorities.includes(authority.name));
   }
 
   identity(force?: boolean): Observable<Account | null> {

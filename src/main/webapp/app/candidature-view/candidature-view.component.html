@@ -1,0 +1,90 @@
+<div *ngIf="candidature != null" class="flex justify-center mb-32">
+  <div class="grid bg-white rounded-lg shadow-xl w-11/12 md:w-9/12 lg:w-1/2">
+    <div class="flex justify-center">
+      <div class="flex flex-col">
+        <h1 class="text-gray-600 font-bold md:text-2xl text-xl mb-2">Candidature</h1>
+        <h1 class="text-gray-600 font-bold md:text-2xl text-xl">Etat : {{ candidature.etat }}</h1>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
+      <div class="grid grid-cols-1">
+        <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Nom</label>
+        <input
+          disabled
+          [value]="candidature.candidat?.user?.firstName"
+          class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+          type="text"
+          placeholder="Input 2"
+        />
+      </div>
+      <div class="grid grid-cols-1">
+        <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Prenom</label>
+        <input
+          disabled
+          [value]="candidature.candidat?.user?.lastName"
+          class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+          type="text"
+          placeholder="Input 3"
+        />
+      </div>
+    </div>
+    <div class="grid grid-cols-1 mt-5 mx-7">
+      <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Email</label>
+      <input
+        disabled
+        [value]="candidature.candidat?.user?.email"
+        class="py-2 px-3 rounded-lg border-2 h-12 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+        type="text"
+        placeholder="Input 1"
+      />
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 my-5 mx-7">
+      <div *ngFor="let c of criterias" class="grid grid-cols-1">
+        <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">{{ c.keyy }}</label>
+        <input
+          *ngIf="c.type == 'TEXT'"
+          [value]="c.valeur"
+          disabled
+          class="py-2 px-3 max-h-12 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+          type="text"
+          placeholder="TEXT"
+        />
+        <div *ngIf="c.type == 'IMAGE'" class="flex items-center justify-center w-full">
+          <!--          <label-->
+          <!--            class='flex flex-col border-4 border-dashed w-full h-32 hover:bg-gray-100 hover:border-purple-300 group'>-->
+          <!--            <div class='flex flex-col items-center justify-center pt-7'>-->
+          <!--              <svg class="w-10 h-10 text-purple-400 group-hover:text-purple-600" fill="none" stroke="currentColor"-->
+          <!--                   viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">-->
+          <!--                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"-->
+          <!--                      d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>-->
+          <!--              </svg>-->
+          <!--              <p class='lowercase text-sm text-gray-400 group-hover:text-purple-600 pt-1 tracking-wider'>Selecdt a-->
+          <!--                photo</p>-->
+          <!--            </div>-->
+          <!--            <input disabled type='file' class="hidden"/>-->
+          <!--          </label>-->
+          <a href="{{ 'http://localhost:8036/api/image/' + c.valeur }}" target="_blank">
+            <img src="{{ 'http://localhost:8036/api/image/' + c.valeur }}" alt="{{ c.valeur }}"
+          /></a>
+        </div>
+      </div>
+    </div>
+
+    <div *jhiHasAnyAuthority="'ROLE_RESPONSABLE'" class="flex items-center justify-center md:gap-8 gap-4 pt-5 pb-5">
+      <button
+        (click)="refuser()"
+        class="bg-red-500 px-5 py-3 text-sm shadow-sm font-medium tracking-wider border text-red-100 rounded-full hover:shadow-lg hover:bg-red-600"
+      >
+        Refuser
+      </button>
+
+      <button
+        (click)="accepter()"
+        class="bg-green-400 px-5 py-3 text-sm shadow-sm font-medium tracking-wider border text-green-100 rounded-full hover:shadow-lg hover:bg-green-500"
+      >
+        Accepter
+      </button>
+    </div>
+  </div>
+</div>

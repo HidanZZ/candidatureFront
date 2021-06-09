@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs';
 
 import { AccountService } from 'app/core/auth/account.service';
 import { Account } from 'app/core/auth/account.model';
+import { Constants } from 'app/config/constants';
+import { Authority } from 'app/config/authority.constants';
 
 @Component({
   selector: 'jhi-home',
@@ -13,6 +15,9 @@ import { Account } from 'app/core/auth/account.model';
 export class HomeComponent implements OnInit, OnDestroy {
   account: Account | null = null;
   authSubscription?: Subscription;
+  res: string = Constants.responsable;
+  ecole: string = Constants.ecole;
+  candidat: string = Constants.candidat;
 
   constructor(private accountService: AccountService, private router: Router) {}
 

@@ -15,6 +15,7 @@ export const errorRoute: Routes = [
     component: ErrorComponent,
     data: {
       pageTitle: 'Error page!',
+      errorCode: '401',
       errorMessage: 'You are not authorized to access this page.',
     },
   },
@@ -23,7 +24,8 @@ export const errorRoute: Routes = [
     component: ErrorComponent,
     data: {
       pageTitle: 'Error page!',
-      errorMessage: 'The page does not exist.',
+      errorCode: '404',
+      errorMessage: "Sorry we couldn't find this page.",
     },
   },
   {

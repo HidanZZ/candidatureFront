@@ -2,7 +2,9 @@
 @import '~bootstrap/scss/functions';
 @import '~bootswatch/dist/minty/variables';
 @import '~bootstrap/scss/variables';
-
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 /* ==============================================================
 Bootstrap tweaks
 ===============================================================*/

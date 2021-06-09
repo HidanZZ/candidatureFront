@@ -1,3 +1,5 @@
+import { Authority } from 'app/admin/user-management/authority.model';
+
 export interface IUser {
   id?: number;
   login?: string;
@@ -6,7 +8,7 @@ export interface IUser {
   email?: string;
   activated?: boolean;
   langKey?: string;
-  authorities?: string[];
+  authorities?: Array<Authority>;
   createdBy?: string;
   createdDate?: Date;
   lastModifiedBy?: string;
@@ -22,7 +24,7 @@ export class User implements IUser {
     public email?: string,
     public activated?: boolean,
     public langKey?: string,
-    public authorities?: string[],
+    public authorities?: Array<Authority>,
     public createdBy?: string,
     public createdDate?: Date,
     public lastModifiedBy?: string,

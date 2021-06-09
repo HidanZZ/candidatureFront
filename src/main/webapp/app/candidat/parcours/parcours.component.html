@@ -1,0 +1,134 @@
+<div class="content">
+  <div class="flex items-center justify-between w-full my-4 pl-4 sm:pr-4">
+    <div class="mr-6">
+      <h2 class="text-3xl md:text-4xl font-semibold tracking-tight leading-7 md:leading-10 mb-1 truncate">
+        Parcours <span *jhiHasAnyAuthority="'ROLE_CANDIDAT'">de : {{ ecole.nom }}</span>
+      </h2>
+    </div>
+    <div *jhiHasAnyAuthority="'ROLE_ECOLE'" class="flex items-center">
+      <button
+        (click)="displayModal = true"
+        class="bg-gray-900 px-5 py-2 text-sm shadow-sm font-semibold tracking-wider text-white rounded-full hover:bg-gray-800"
+      >
+        Add +
+      </button>
+    </div>
+  </div>
+  <div class="flex flex-row flex-wrap justify-center">
+    <div *ngIf="parcours.length == 0" class="font-base mt-6 tracking-tight text-gray-600">No available parcour found</div>
+    <div *ngFor="let parcour of parcours" class="m-3 flex justify-center items-center">
+      <div
+        class="flex flex-col justify-between w-72 sm:w-96 h-80 bg-white bg-center text-gray-800 shadow-md overflow-hidden"
+        style="background-image: url('content/images/parcours.jpg'); background-size: contain"
+      >
+        <div class="flex justify-between items-center ml-4 pr-8">
+          <div
+            *jhiHasAnyAuthority="'ROLE_ECOLE'"
+            (click)="delete(parcour)"
+            class="bg-red-600 w-10 h-12 shadow cursor-pointer flex flex-col-reverse p-2 text-center font-bold text-white rounded-b-full"
+          >
+            <fa-icon icon="trash-alt" [fixedWidth]="true"></fa-icon>
+          </div>
+        </div>
+        <div (click)="navigate(parcour)" class="bg-white bg-opacity-95 shadow-md rounded-r-xl p-4 cursor-pointer flex flex-col mr-4 mb-8">
+          <h3 class="text-xl font-bold pb-2">{{ parcour.libelle }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<p-dialog
+  header="Add Parcour"
+  [(visible)]="displayModal"
+  [modal]="true"
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="alert alert-danger" *ngIf="referenceExists"><strong>Reference deja Existe !</strong></div>
+
+      <div class="alert alert-danger" *ngIf="libelleExists"><strong>Libelle deja Existe !</strong></div>
+    </div>
+  </div>
+  <form name="form" role="form" (ngSubmit)="save()" [formGroup]="form">
+    <div class="form-group">
+      <label class="form-control-label" for="libelle">Libelle</label>
+      <input
+        type="text"
+        class="form-control"
+        id="libelle"
+        name="libelle"
+        placeholder="libelle du parcour"
+        formControlName="libelle"
+        data-cy="libelle"
+      />
+
+      <div *ngIf="form.get('libelle')!.invalid && (form.get('libelle')!.dirty || form.get('libelle')!.touched)">
+        <small class="form-text text-danger" *ngIf="form.get('libelle')?.errors?.required"> libelle is required. </small>
+
+        <small class="form-text text-danger" *ngIf="form.get('libelle')?.errors?.minlength">
+          libelle is required to be at least 1 character.
+        </small>
+
+        <small class="form-text text-danger" *ngIf="form.get('libelle')?.errors?.maxlength">
+          libelle cannot be longer than 50 characters.
+        </small>
+
+        <small class="form-text text-danger" *ngIf="form.get('libelle')?.errors?.pattern">
+          libelle can only contain letters and digits.
+        </small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-control-label" for="reference">reference</label>
+      <input
+        type="text"
+        class="form-control"
+        id="reference"
+        name="reference"
+        placeholder="reference du parcour"
+        formControlName="reference"
+        data-cy="reference"
+      />
+
+      <div *ngIf="form.get('reference')!.invalid && (form.get('reference')!.dirty || form.get('reference')!.touched)">
+        <small class="form-text text-danger" *ngIf="form.get('reference')?.errors?.required"> reference is required. </small>
+
+        <small class="form-text text-danger" *ngIf="form.get('reference')?.errors?.minlength">
+          reference is required to be at least 1 character.
+        </small>
+
+        <small class="form-text text-danger" *ngIf="form.get('reference')?.errors?.maxlength">
+          reference cannot be longer than 50 characters.
+        </small>
+
+        <small class="form-text text-danger" *ngIf="form.get('reference')?.errors?.pattern">
+          reference can only contain letters and digits.
+        </small>
+      </div>
+    </div>
+
+    <div class="flex mt-5 flex-row justify-between">
+      <button
+        (click)="displayModal = false"
+        class="bg-red-500 px-5 py-3 text-sm shadow-sm font-medium tracking-wider border text-red-100 rounded-full hover:shadow-lg hover:bg-red-600"
+      >
+        Cancel
+      </button>
+
+      <button
+        type="submit"
+        class="bg-green-400 px-5 py-3 text-sm shadow-sm font-medium tracking-wider border text-green-100 rounded-full hover:shadow-lg hover:bg-green-500"
+      >
+        Save
+      </button>
+    </div>
+  </form>
+  <!--  <ng-template pTemplate="footer">-->
+  <!--   -->
+
+  <!--  </ng-template>-->
+</p-dialog>
