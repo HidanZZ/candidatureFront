@@ -34,15 +34,7 @@ export class SharedFiliereComponent implements OnInit {
     email: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(254), Validators.email]],
   });
   criteriaForm = this.fb.group({
-    libelle: [
-      '',
-      [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(50),
-        Validators.pattern('^[a-zA-Z0-9!$&*+=?^_`{|}~.-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$|^[_.@A-Za-z0-9-]+$'),
-      ],
-    ],
+    libelle: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50)]],
     type: ['TEXT'],
   });
 

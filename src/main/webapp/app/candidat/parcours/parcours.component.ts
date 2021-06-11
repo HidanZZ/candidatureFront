@@ -18,15 +18,7 @@ export class ParcoursComponent implements OnInit {
   ecoleID: any;
   displayModal: any = false;
   form = this.fb.group({
-    libelle: [
-      '',
-      [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(50),
-        Validators.pattern('^[a-zA-Z0-9!$&*+=?^_`{|}~.-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$|^[_.@A-Za-z0-9-]+$'),
-      ],
-    ],
+    libelle: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50)]],
     reference: [
       '',
       [
