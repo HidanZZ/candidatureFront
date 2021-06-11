@@ -39,7 +39,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="form-control-label" for="prenom">prenom</label>
+          <label class="form-control-label" for="prenom">First name</label>
           <input
             type="text"
             class="form-control"
@@ -93,7 +93,7 @@
           </div>
         </div>
         <div class="form-group" *ngIf="authority == 'ROLE_ECOLE'">
-          <label class="form-control-label" for="nom de l'ecole">nom de l'ecole</label>
+          <label class="form-control-label" for="nom de l'ecole">School's name</label>
           <input
             type="text"
             class="form-control"
@@ -106,19 +106,17 @@
 
           <div *ngIf="registerForm.get('ecole')!.invalid && (registerForm.get('ecole')!.dirty || registerForm.get('ecole')!.touched)">
             <small class="form-text text-danger" *ngIf="registerForm.get('ecole')?.errors?.required">
-              Your nom de l'ecole is required.
+              Your school's name is required.
             </small>
 
-            <small class="form-text text-danger" *ngIf="registerForm.get('ecole')?.errors?.invalid">
-              Your nom de l'ecole is invalid.
-            </small>
+            <small class="form-text text-danger" *ngIf="registerForm.get('ecole')?.errors?.invalid"> Your school's name is invalid. </small>
 
             <small class="form-text text-danger" *ngIf="registerForm.get('ecole')?.errors?.minlength">
-              Your nom de l'ecole is required to be at least 5 characters.
+              Your school's name is required to be at least 5 characters.
             </small>
 
             <small class="form-text text-danger" *ngIf="registerForm.get('ecole')?.errors?.maxlength">
-              Your nom de l'ecole cannot be longer than 100 characters.
+              Your school's name cannot be longer than 100 characters.
             </small>
           </div>
         </div>

@@ -12,7 +12,7 @@ import { Account } from 'app/core/auth/account.model';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  public resourceUrl = this.applicationConfigService.getEndpointFor('api/users');
+  public resourceUrl = this.applicationConfigService.getEndpointFor('api/admin/users');
 
   constructor(private http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
 

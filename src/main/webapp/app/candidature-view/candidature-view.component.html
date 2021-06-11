@@ -2,14 +2,14 @@
   <div class="grid bg-white rounded-lg shadow-xl w-11/12 md:w-9/12 lg:w-1/2">
     <div class="flex justify-center">
       <div class="flex flex-col">
-        <h1 class="text-gray-600 font-bold md:text-2xl text-xl mb-2">Candidature</h1>
-        <h1 class="text-gray-600 font-bold md:text-2xl text-xl">Etat : {{ candidature.etat }}</h1>
+        <h1 class="text-gray-600 font-bold md:text-2xl text-xl mb-2">Application</h1>
+        <h1 class="text-gray-600 font-bold md:text-2xl text-xl">State : {{ candidature.etat }}</h1>
       </div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
       <div class="grid grid-cols-1">
-        <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Nom</label>
+        <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Last name</label>
         <input
           disabled
           [value]="candidature.candidat?.user?.firstName"
@@ -19,7 +19,7 @@
         />
       </div>
       <div class="grid grid-cols-1">
-        <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Prenom</label>
+        <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">First name</label>
         <input
           disabled
           [value]="candidature.candidat?.user?.lastName"
@@ -30,7 +30,7 @@
       </div>
     </div>
     <div class="grid grid-cols-1 mt-5 mx-7">
-      <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Email</label>
+      <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">E-mail</label>
       <input
         disabled
         [value]="candidature.candidat?.user?.email"
@@ -76,14 +76,14 @@
         (click)="refuser()"
         class="bg-red-500 px-5 py-3 text-sm shadow-sm font-medium tracking-wider border text-red-100 rounded-full hover:shadow-lg hover:bg-red-600"
       >
-        Refuser
+        Decline
       </button>
 
       <button
         (click)="accepter()"
         class="bg-green-400 px-5 py-3 text-sm shadow-sm font-medium tracking-wider border text-green-100 rounded-full hover:shadow-lg hover:bg-green-500"
       >
-        Accepter
+        Accept
       </button>
     </div>
   </div>

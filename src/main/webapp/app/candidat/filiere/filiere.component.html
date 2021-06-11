@@ -2,7 +2,7 @@
   <div class="flex items-center justify-between w-full my-4 pl-4 sm:pr-4">
     <div class="mr-6">
       <h2 class="text-3xl md:text-4xl font-semibold tracking-tight leading-7 md:leading-10 mb-1 truncate">
-        filieres du Parcour : {{ parcours.libelle }}
+        This course's programs : {{ parcours.libelle }}
       </h2>
     </div>
     <div *jhiHasAnyAuthority="'ROLE_ECOLE'" class="flex items-center">
@@ -15,7 +15,7 @@
     </div>
   </div>
   <div class="flex flex-row flex-wrap justify-center">
-    <div *ngIf="filieres.length == 0" class="font-base mt-6 tracking-tight text-gray-600">No available filieres found</div>
+    <div *ngIf="filieres.length == 0" class="font-base mt-6 tracking-tight text-gray-600">No available programs found</div>
     <!--    <div *ngFor="let filiere of filieres"-->
     <!--         class="bg-gray-100 border-indigo-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-4 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-indigo-400 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500">-->
     <!--      <div class="flex justify-between items-center ml-4 pr-8">-->
@@ -32,7 +32,7 @@
     <div *ngFor="let filiere of filieres" class="max-w-xl m-6 w-full rounded-lg shadow-lg p-4 flex md:flex-row flex-col">
       <div class="flex-1">
         <h3 class="font-semibold text-lg tracking-wide cursor-pointer" [routerLink]="['/filiere', filiere.id]">{{ filiere.libelle }}</h3>
-        <p class="text-gray-500 my-1">Nombre De Place : {{ filiere.nbrplaces }}</p>
+        <p class="text-gray-500 my-1">Number of seats: {{ filiere.nbrplaces }}</p>
       </div>
       <div class="md:px-2 mt-3 md:mt-0 items-center flex">
         <button
@@ -64,14 +64,14 @@
 >
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <div class="alert alert-danger" *ngIf="referenceExists"><strong>Reference deja Existe !</strong></div>
+      <div class="alert alert-danger" *ngIf="referenceExists"><strong>Reference already exists!</strong></div>
 
-      <div class="alert alert-danger" *ngIf="libelleExists"><strong>Libelle deja Existe !</strong></div>
+      <div class="alert alert-danger" *ngIf="libelleExists"><strong>Label already exists !</strong></div>
     </div>
   </div>
   <form name="form" role="form" (ngSubmit)="save()" [formGroup]="form">
     <div class="form-group">
-      <label class="form-control-label" for="libelle">Libelle</label>
+      <label class="form-control-label" for="libelle">Label</label>
       <input
         type="text"
         class="form-control"
@@ -83,18 +83,18 @@
       />
 
       <div *ngIf="form.get('libelle')!.invalid && (form.get('libelle')!.dirty || form.get('libelle')!.touched)">
-        <small class="form-text text-danger" *ngIf="form.get('libelle')?.errors?.required"> libelle is required. </small>
+        <small class="form-text text-danger" *ngIf="form.get('libelle')?.errors?.required"> Label is required. </small>
 
         <small class="form-text text-danger" *ngIf="form.get('libelle')?.errors?.minlength">
-          libelle is required to be at least 1 character.
+          Label is required to be at least 1 character.
         </small>
 
         <small class="form-text text-danger" *ngIf="form.get('libelle')?.errors?.maxlength">
-          libelle cannot be longer than 50 characters.
+          Label cannot be longer than 50 characters.
         </small>
 
         <small class="form-text text-danger" *ngIf="form.get('libelle')?.errors?.pattern">
-          libelle can only contain letters and digits.
+          Label can only contain letters and digits.
         </small>
       </div>
     </div>
@@ -111,23 +111,23 @@
       />
 
       <div *ngIf="form.get('reference')!.invalid && (form.get('reference')!.dirty || form.get('reference')!.touched)">
-        <small class="form-text text-danger" *ngIf="form.get('reference')?.errors?.required"> reference is required. </small>
+        <small class="form-text text-danger" *ngIf="form.get('reference')?.errors?.required"> Reference is required. </small>
 
         <small class="form-text text-danger" *ngIf="form.get('reference')?.errors?.minlength">
-          reference is required to be at least 1 character.
+          Reference is required to be at least 1 character.
         </small>
 
         <small class="form-text text-danger" *ngIf="form.get('reference')?.errors?.maxlength">
-          reference cannot be longer than 50 characters.
+          Reference cannot be longer than 50 characters.
         </small>
 
         <small class="form-text text-danger" *ngIf="form.get('reference')?.errors?.pattern">
-          reference can only contain letters and digits.
+          Reference can only contain letters and digits.
         </small>
       </div>
     </div>
     <div class="form-group">
-      <label class="form-control-label" for="nbrPlaces">Nombre de Place</label>
+      <label class="form-control-label" for="nbrPlaces">Number of seats</label>
       <input
         type="text"
         class="form-control"
@@ -139,17 +139,17 @@
       />
 
       <div *ngIf="form.get('nbrPlaces')!.invalid && (form.get('nbrPlaces')!.dirty || form.get('nbrPlaces')!.touched)">
-        <small class="form-text text-danger" *ngIf="form.get('nbrPlaces')?.errors?.required"> reference is required. </small>
+        <small class="form-text text-danger" *ngIf="form.get('nbrPlaces')?.errors?.required"> Reference is required. </small>
 
         <small class="form-text text-danger" *ngIf="form.get('nbrPlaces')?.errors?.minlength">
-          reference is required to be at least 1 character.
+          Reference is required to be at least 1 character.
         </small>
 
         <small class="form-text text-danger" *ngIf="form.get('nbrPlaces')?.errors?.maxlength">
-          reference cannot be longer than 50 characters.
+          Reference cannot be longer than 50 characters.
         </small>
 
-        <small class="form-text text-danger" *ngIf="form.get('nbrPlaces')?.errors?.pattern"> reference can only contain digits. </small>
+        <small class="form-text text-danger" *ngIf="form.get('nbrPlaces')?.errors?.pattern"> Reference can only contain digits. </small>
       </div>
     </div>
 

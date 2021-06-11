@@ -1,14 +1,12 @@
 <div *jhiHasAnyAuthority="'ROLE_ECOLE'" class="content col-md-6 offset-md-3">
   <div class="flex flex-row flex-wrap justify-center">
-    <div *ngIf="responsable == null" class="font-base mt-6 tracking-tight text-gray-600">
-      veuillez designer un responsable pour ce filiere
-    </div>
+    <div *ngIf="responsable == null" class="font-base mt-6 tracking-tight text-gray-600">Please choose a manager for this program.</div>
   </div>
 </div>
 <div *jhiHasAnyAuthority="'ROLE_RESPONSABLE'" class="content col-md-6 offset-md-3">
   <div class="flex flex-row flex-wrap justify-center">
     <div *ngIf="responsable.filiere == null" class="font-base mt-6 tracking-tight text-gray-600">
-      Veuillez contacter votre ecole pour vous ajouter a un filiere
+      Please contact your school to assign you an adequate program.
     </div>
   </div>
 </div>
@@ -20,7 +18,7 @@
       class="border-indigo-600 m-5 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | px-5 py-2 border-solid rounded-2xl border-2 | flex justify-center cursor-pointer | hover:bg-indigo-400 hover:text-white text-gray-900 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500"
     >
       <div class="flex flex-col justify-center">
-        <p class="dark:text-gray-300 font-semibold">Candidatures soumise</p>
+        <p class="dark:text-gray-300 font-semibold">application submitted</p>
       </div>
     </div>
     <div
@@ -29,7 +27,7 @@
       class="border-indigo-600 m-5 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | px-5 py-2 border-solid rounded-2xl border-2 | flex justify-center cursor-pointer | hover:bg-indigo-400 hover:text-white text-gray-900 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500"
     >
       <div class="flex flex-col justify-center">
-        <p class="dark:text-gray-300 font-semibold">Format de candidature</p>
+        <p class="dark:text-gray-300 font-semibold">Application format</p>
       </div>
     </div>
     <div
@@ -38,7 +36,7 @@
       class="border-indigo-600 m-5 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | px-5 py-2 border-solid rounded-2xl border-2 | flex justify-center cursor-pointer | hover:bg-indigo-400 hover:text-white text-gray-900 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500"
     >
       <div class="flex flex-col justify-center">
-        <p class="dark:text-gray-300 font-semibold">Responsable du filiere</p>
+        <p class="dark:text-gray-300 font-semibold">Program's manager</p>
       </div>
     </div>
   </div>
@@ -60,11 +58,11 @@
         <thead>
           <tr>
             <th scope="col"><span>ID</span></th>
-            <th scope="col"><span>nom</span></th>
-            <th scope="col"><span>prenom</span></th>
-            <th scope="col"><span>email</span></th>
-            <th scope="col"><span>date creation</span></th>
-            <th scope="col"><span>Etat</span></th>
+            <th scope="col"><span>Last name</span></th>
+            <th scope="col"><span>First name</span></th>
+            <th scope="col"><span>E-mail</span></th>
+            <th scope="col"><span>Creation date</span></th>
+            <th scope="col"><span>State</span></th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -105,13 +103,13 @@
       <div class="mb-3">
         <div class="flex justify-center">
           <div class="flex">
-            <h1 class="text-gray-600 font-bold md:text-2xl text-xl">Candidature</h1>
+            <h1 class="text-gray-600 font-bold md:text-2xl text-xl">Application</h1>
           </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
           <div class="grid grid-cols-1">
-            <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Nom</label>
+            <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Last name</label>
             <input
               class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
               type="text"
@@ -119,7 +117,7 @@
             />
           </div>
           <div class="grid grid-cols-1">
-            <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Prenom</label>
+            <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">First name</label>
             <input
               class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
               type="text"
@@ -128,7 +126,7 @@
           </div>
         </div>
         <div class="grid grid-cols-1 mt-5 mx-7">
-          <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Email</label>
+          <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">E-mail</label>
           <input
             disabled
             class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -162,7 +160,7 @@
                       d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
                     ></path>
                   </svg>
-                  <p class="lowercase text-sm text-gray-400 group-hover:text-purple-600 pt-1 tracking-wider">Selecdt a photo</p>
+                  <p class="lowercase text-sm text-gray-400 group-hover:text-purple-600 pt-1 tracking-wider">Upload a picture</p>
                 </div>
                 <input disabled type="file" class="hidden" />
               </label>
@@ -173,7 +171,7 @@
       <form *jhiHasAnyAuthority="'ROLE_RESPONSABLE'" name="form" role="form" (ngSubmit)="ajouterCriteria()" [formGroup]="criteriaForm">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8 mb-5 mt-2 mx-7">
           <div class="grid grid-cols-1">
-            <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">libelle</label>
+            <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Label</label>
             <input
               type="text"
               name="libelle"
@@ -186,19 +184,19 @@
               *ngIf="criteriaForm.get('libelle')!.invalid && (criteriaForm.get('libelle')!.dirty || criteriaForm.get('libelle')!.touched)"
             >
               <small class="criteriaForm-text text-danger" *ngIf="criteriaForm.get('libelle')?.errors?.required">
-                libelle is required.
+                The label is required.
               </small>
 
               <small class="criteriaForm-text text-danger" *ngIf="criteriaForm.get('libelle')?.errors?.minlength">
-                libelle is required to be at least 1 character.
+                The label is required to be at least 1 character.
               </small>
 
               <small class="criteriaForm-text text-danger" *ngIf="criteriaForm.get('libelle')?.errors?.maxlength">
-                libelle cannot be longer than 50 characters.
+                The label cannot be longer than 50 characters.
               </small>
 
               <small class="criteriaForm-text text-danger" *ngIf="criteriaForm.get('libelle')?.errors?.pattern">
-                libelle can only contain letters and digits.
+                The label can only contain letters and digits.
               </small>
             </div>
           </div>
@@ -220,7 +218,7 @@
               [disabled]="criteriaForm.invalid"
               class="bg-green-400 text-sm shadow-sm font-medium tracking-wider border text-green-100 rounded-full hover:shadow-lg hover:bg-green-500"
             >
-              Ajouter
+              Add
             </button>
           </div>
         </div>
@@ -239,12 +237,12 @@
 >
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <div class="alert alert-danger" *ngIf="responsableExist"><strong>Responsable n'existe pas !</strong></div>
+      <div class="alert alert-danger" *ngIf="responsableExist"><strong>This manager does not exist!</strong></div>
     </div>
   </div>
   <form name="form" role="form" *ngIf="responsable == null" (ngSubmit)="search()" [formGroup]="form">
     <div class="form-group">
-      <label class="form-control-label" for="email">Email Responsable</label>
+      <label class="form-control-label" for="email">Manager's E-mail</label>
       <div class="flex flex-row justify-between items-center">
         <input
           type="email"
@@ -264,16 +262,16 @@
       </div>
 
       <div *ngIf="form.get('email')!.invalid && (form.get('email')!.dirty || form.get('email')!.touched)">
-        <small class="form-text text-danger" *ngIf="form.get('email')?.errors?.required"> Your email is required. </small>
+        <small class="form-text text-danger" *ngIf="form.get('email')?.errors?.required"> Your E-mail is required. </small>
 
-        <small class="form-text text-danger" *ngIf="form.get('email')?.errors?.invalid"> Your email is invalid. </small>
+        <small class="form-text text-danger" *ngIf="form.get('email')?.errors?.invalid"> Your E-mail is invalid. </small>
 
         <small class="form-text text-danger" *ngIf="form.get('email')?.errors?.minlength">
-          Your email is required to be at least 5 characters.
+          Your E-mail is required to be at least 5 characters.
         </small>
 
         <small class="form-text text-danger" *ngIf="form.get('email')?.errors?.maxlength">
-          Your email cannot be longer than 100 characters.
+          Your E-mail cannot be longer than 100 characters.
         </small>
       </div>
     </div>
@@ -281,7 +279,7 @@
     <div class="flex flex-col justify-center" *ngIf="respTemp != null">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
         <div class="grid grid-cols-1">
-          <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Nom</label>
+          <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Last name</label>
           <input
             class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
             disabled
@@ -291,7 +289,7 @@
           />
         </div>
         <div class="grid grid-cols-1">
-          <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Prenom</label>
+          <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">First name</label>
           <input
             class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
             disabled
@@ -311,7 +309,7 @@
   </form>
   <div *ngIf="responsable != null" class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 m-7">
     <div class="grid grid-cols-1">
-      <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Nom</label>
+      <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Last name</label>
       <input
         class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
         disabled
@@ -321,7 +319,7 @@
       />
     </div>
     <div class="grid grid-cols-1">
-      <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Prenom</label>
+      <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">First name</label>
       <input
         class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
         disabled

@@ -1,22 +1,22 @@
 <div class="flex justify-center mb-32">
   <div class="alert alert-success" *ngIf="success">
-    <strong>Candidature saved!</strong> click <a href="#" (click)="return()"><strong>>HERE<</strong></a> to return
+    <strong>Application saved!</strong> click <a href="#" (click)="return()"><strong>>HERE<</strong></a> to return
   </div>
   <div *ngIf="!success" class="grid bg-white rounded-lg shadow-xl w-11/12 md:w-9/12 lg:w-1/2">
     <div class="flex justify-center">
       <div class="flex">
-        <h1 class="text-gray-600 font-bold md:text-2xl text-xl">Candidature : {{ filiere?.libelle }}</h1>
+        <h1 class="text-gray-600 font-bold md:text-2xl text-xl">Application : {{ filiere?.libelle }}</h1>
       </div>
     </div>
     <div class="flex justify-center" *ngIf="exist">
       <div class="flex">
-        <h1 class="text-gray-600 font-bold md:text-2xl text-xl">Vous avez deja postuler pour ce filiere</h1>
+        <h1 class="text-gray-600 font-bold md:text-2xl text-xl">You have already applied for this program</h1>
       </div>
     </div>
     <form name="form" role="form" (ngSubmit)="submit()" [formGroup]="form" *ngIf="!exist">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
         <div class="grid grid-cols-1">
-          <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Nom</label>
+          <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Last name</label>
           <input
             class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
             [value]="user?.firstName"
@@ -26,7 +26,7 @@
           />
         </div>
         <div class="grid grid-cols-1">
-          <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Prenom</label>
+          <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">First name</label>
           <input
             [value]="user?.lastName"
             disabled
@@ -37,7 +37,7 @@
         </div>
       </div>
       <div class="grid grid-cols-1 mt-5 mx-7">
-        <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Email</label>
+        <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">E-mail</label>
         <input
           disabled
           [value]="user?.email"
