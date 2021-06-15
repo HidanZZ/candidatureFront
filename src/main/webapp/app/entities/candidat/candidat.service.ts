@@ -9,4 +9,8 @@ export class CandidatService {
   public resourceUrl = this.applicationConfigService.getEndpointFor('api/candidat');
 
   constructor(private http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
+  count(): Observable<number> {
+    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+    return this.http.get<number>(this.resourceUrl + '/countAll');
+  }
 }

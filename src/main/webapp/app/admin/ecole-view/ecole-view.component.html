@@ -1,0 +1,83 @@
+<div *ngIf="ecole != null" class="flex justify-center mb-32">
+  <div class="grid bg-white rounded-lg shadow-xl w-11/12 md:w-9/12 lg:w-1/2">
+    <div class="flex justify-center">
+      <div class="flex flex-col">
+        <h1 class="font-bold md:text-2xl text-xl">
+          State :
+          <span [class.text-red-500]="!ecole.activated" [class.text-green-500]="ecole.activated">
+            {{ ecole.activated ? 'ACTIVATED' : 'DEACTIVATED' }}</span
+          >
+        </h1>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
+      <div class="grid grid-cols-1">
+        <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Last name</label>
+        <input
+          disabled
+          [value]="ecole.user?.firstName"
+          class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+          type="text"
+          placeholder="Input 2"
+        />
+      </div>
+      <div class="grid grid-cols-1">
+        <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">First name</label>
+        <input
+          disabled
+          [value]="ecole.user?.lastName"
+          class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+          type="text"
+          placeholder="Input 3"
+        />
+      </div>
+    </div>
+    <div class="grid grid-cols-1 mt-5 mx-7">
+      <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">E-mail</label>
+      <input
+        disabled
+        [value]="ecole.user?.email"
+        class="py-2 px-3 rounded-lg border-2 h-12 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+        type="text"
+        placeholder="Input 1"
+      />
+    </div>
+    <div class="grid grid-cols-1 mt-5 mx-7">
+      <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">School's name</label>
+      <input
+        disabled
+        [value]="ecole.nom"
+        class="py-2 px-3 rounded-lg border-2 h-12 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+        type="text"
+        placeholder="Input 1"
+      />
+    </div>
+    <div class="grid grid-cols-1 mt-5 mx-7">
+      <label class="uppercase md:text-sm text-xs text-gray-500 font-semibold">Image</label>
+      <div class="flex items-center justify-center w-full">
+        <a href="{{ ecole.image ? 'http://localhost:8036/api/image/' + ecole.image : 'content/images/no-image.jpg' }}" target="_blank">
+          <img
+            src="{{ ecole.image ? 'http://localhost:8036/api/image/' + ecole.image : 'content/images/no-image.jpg' }}"
+            alt="{{ ecole.image }}"
+        /></a>
+      </div>
+    </div>
+
+    <div *jhiHasAnyAuthority="'ROLE_ADMIN'" class="flex items-center justify-center md:gap-8 gap-4 pt-5 pb-5">
+      <button
+        (click)="refuser()"
+        class="bg-red-500 px-5 py-3 text-sm shadow-sm font-medium tracking-wider border text-red-100 rounded-full hover:shadow-lg hover:bg-red-600"
+      >
+        Decline
+      </button>
+
+      <button
+        (click)="accepter()"
+        class="bg-green-400 px-5 py-3 text-sm shadow-sm font-medium tracking-wider border text-green-100 rounded-full hover:shadow-lg hover:bg-green-500"
+      >
+        Accept
+      </button>
+    </div>
+  </div>
+</div>

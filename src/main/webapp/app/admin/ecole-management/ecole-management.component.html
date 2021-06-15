@@ -1,0 +1,55 @@
+<div class="content">
+  <div class="flex items-center justify-between w-full my-4 pl-4 sm:pr-4">
+    <div class="mr-6">
+      <h2 class="text-3xl md:text-4xl font-semibold tracking-tight leading-7 md:leading-10 mb-1 truncate">School Management</h2>
+    </div>
+  </div>
+  <div class="flex items-center justify-center w-full my-4 pl-4 sm:pr-4">
+    <div *ngIf="ecoles.length == 0" class="font-base mt-6 tracking-tight text-gray-600">No available Schools found</div>
+    <div class="table-responsive" *ngIf="ecoles.length != 0">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col"><span>ID</span></th>
+            <th scope="col"><span>Last name</span></th>
+            <th scope="col"><span>First name</span></th>
+            <th scope="col"><span>E-mail</span></th>
+            <th scope="col"><span>School name</span></th>
+            <th scope="col"><span>State</span></th>
+            <th scope="col"><span>Image</span></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ecole of ecoles; trackBy: trackIdentity">
+            <td>
+              <a [routerLink]="['/ecole', ecole.id, 'view']">{{ ecole.id }}</a>
+            </td>
+            <td>{{ ecole.user?.firstName }}</td>
+            <td>{{ ecole.user?.lastName }}</td>
+            <td>{{ ecole.user?.email }}</td>
+            <td>{{ ecole.nom }}</td>
+
+            <td>
+              <div>
+                <span class="badge badge-{{ ecole.activated ? 'success' : 'danger' }}">{{
+                  ecole.activated ? 'activated' : 'deactivated'
+                }}</span>
+              </div>
+            </td>
+            <td>{{ ecole.image ? 'yes' : 'no' }}</td>
+
+            <td class="text-right">
+              <div class="btn-group">
+                <button type="submit" [routerLink]="['/ecole', ecole.id, 'view']" class="btn btn-info btn-sm">
+                  <fa-icon icon="eye"></fa-icon>
+                  <span class="d-none d-md-inline">View</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

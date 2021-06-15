@@ -52,6 +52,7 @@
     "@tailwindcss/typography": "^0.4.1",
     "bootstrap": "4.6.0",
     "bootswatch": "4.6.0",
+    "chart.js": "^2.9.4",
     "dayjs": "1.10.4",
     "ngx-infinite-scroll": "10.0.1",
     "ngx-webstorage": "7.0.1",

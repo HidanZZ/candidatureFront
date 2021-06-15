@@ -32,6 +32,11 @@ export class AuthGuardService implements CanActivate {
 
             this.router.navigate(['/responsable']);
             return false;
+          } else if (this.accountService.hasAnyAuthority(Authority.ADMIN)) {
+            // eslint-disable-next-line no-console
+
+            this.router.navigate(['/admin/dashboard']);
+            return false;
           }
 
           this.router.navigate(['accessdenied']);

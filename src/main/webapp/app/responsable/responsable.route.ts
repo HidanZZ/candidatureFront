@@ -6,7 +6,7 @@ export const responsableRoute: Route[] = [
     path: '',
     component: SharedFiliereComponent,
     data: {
-      pageTitle: 'Welcome, Java Hipster!',
+      pageTitle: 'Futur Uni!',
     },
   },
 ];

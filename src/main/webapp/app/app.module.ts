@@ -29,12 +29,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedFiliereComponent } from './shared-filiere/shared-filiere.component';
 import { DialogModule } from 'primeng/dialog';
 import { CandidatureViewComponent } from './candidature-view/candidature-view.component';
-
+import { EcoleManagementComponent } from './admin/ecole-management/ecole-management.component';
+import { EcoleViewComponent } from './admin/ecole-view/ecole-view.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { ChartModule } from 'primeng/chart';
 @NgModule({
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
+    ChartModule,
     HomeModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     EntityRoutingModule,
@@ -59,6 +63,9 @@ import { CandidatureViewComponent } from './candidature-view/candidature-view.co
     FooterComponent,
     SharedFiliereComponent,
     CandidatureViewComponent,
+    EcoleManagementComponent,
+    EcoleViewComponent,
+    DashboardComponent,
   ],
   bootstrap: [MainComponent],
 })

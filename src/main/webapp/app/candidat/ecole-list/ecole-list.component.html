@@ -12,7 +12,7 @@
         (click)="select(ecole)"
         [routerLink]="['ecole', ecole.id]"
         style="background-image:url({{
-          ecole.image ? 'http://localhost:8036/api/image/' + ecole.image + '.jpg' : 'content/images/no-image.jpg'
+          ecole.image ? 'http://localhost:8036/api/image/' + ecole.image : 'content/images/no-image.jpg'
         }});background-size: contain"
       >
         <div class="flex justify-between items-center ml-4 pr-8"></div>

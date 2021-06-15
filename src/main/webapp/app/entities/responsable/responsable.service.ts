@@ -26,6 +26,14 @@ export class ResponsableService {
     // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
     return this.http.get<Responsable>(this.resourceUrl + '/user/' + id);
   }
+  public countNonAssigned(): Observable<number> {
+    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+    return this.http.get<number>(this.resourceUrl + '/countNonAssigned');
+  }
+  public countAssigned(): Observable<number> {
+    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+    return this.http.get<number>(this.resourceUrl + '/countAssigned');
+  }
 
   public update(responsable: Responsable): Observable<Responsable> {
     // eslint-disable-next-line @typescript-eslint/restrict-plus-operands

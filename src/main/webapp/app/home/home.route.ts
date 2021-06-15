@@ -10,6 +10,6 @@ export const HOME_ROUTE: Route = {
   component: HomeComponent,
   canActivate: [AuthGuardService],
   data: {
-    pageTitle: 'Welcome, Java Hipster!',
+    pageTitle: 'Futur Uni!',
   },
 };

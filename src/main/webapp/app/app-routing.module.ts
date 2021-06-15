@@ -34,7 +34,7 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
         {
           path: 'ecole',
           data: {
-            authorities: [Authority.ECOLE],
+            authorities: [Authority.ECOLE, Authority.ADMIN],
           },
           canActivate: [UserRouteAccessService],
           loadChildren: () => import('./ecole/ecole.module').then(m => m.EcoleModule),

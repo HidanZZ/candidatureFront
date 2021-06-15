@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { EcoleManagementComponent } from 'app/admin/ecole-management/ecole-management.component';
+import { DashboardComponent } from 'app/admin/dashboard/dashboard.component';
+
 /* jhipster-needle-add-admin-module-import - JHipster will add admin modules imports here */
 
 @NgModule({
@@ -14,8 +17,12 @@ import { RouterModule } from '@angular/router';
         },
       },
       {
-        path: 'docs',
-        loadChildren: () => import('./docs/docs.module').then(m => m.DocsModule),
+        path: 'ecole-management',
+        component: EcoleManagementComponent,
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
       },
       /* jhipster-needle-add-admin-route - JHipster will add admin routes here */
     ]),

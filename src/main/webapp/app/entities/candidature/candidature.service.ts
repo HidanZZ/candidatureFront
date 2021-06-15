@@ -6,6 +6,7 @@ import { Filiere } from 'app/entities/filiere/filiere.model';
 import { Observable } from 'rxjs';
 import { Candidature } from 'app/entities/candidature/candidature.model';
 import { Candidat } from 'app/entities/candidat/candidat.model';
+import { Stats } from 'app/entities/candidature/stats.model';
 
 @Injectable({ providedIn: 'root' })
 export class CandidatureService {
@@ -31,7 +32,10 @@ export class CandidatureService {
     // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
     return this.http.get<Candidature>(this.resourceUrl + '/' + id + '/etat/' + etat);
   }
-
+  getStats(): Observable<Stats> {
+    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+    return this.http.get<Stats>(this.resourceUrl + '/stats');
+  }
   exist(cid: number, fid: number): Observable<boolean> {
     // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
     return this.http.get<boolean>(this.resourceUrl + '/' + cid + '/' + fid);

@@ -9,28 +9,28 @@ export const CandidatRoutes: Route[] = [
     path: '',
     component: EcoleListComponent,
     data: {
-      pageTitle: 'Welcome, Java Hipster!',
+      pageTitle: 'Futur Uni!',
     },
   },
   {
     path: 'ecole/:id',
     component: ParcoursComponent,
     data: {
-      pageTitle: 'Welcome, Java Hipster!',
+      pageTitle: 'Futur Uni!',
     },
   },
   {
     path: 'parcours/:id',
     component: FiliereComponent,
     data: {
-      pageTitle: 'Welcome, Java Hipster!',
+      pageTitle: 'Futur Uni!',
     },
   },
   {
     path: 'filiere/:id',
     component: CandidatureComponent,
     data: {
-      pageTitle: 'Welcome, Java Hipster!',
+      pageTitle: 'Futur Uni!',
     },
   },
 ];

@@ -25,6 +25,10 @@ export class UserService {
     // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
     return this.http.get<Account>(this.resourceUrl + '/' + email);
   }
+  public countAll(): Observable<number> {
+    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+    return this.http.get<number>(this.resourceUrl + '/countAll');
+  }
   public getRespByEmail(email: string): Observable<Account> {
     // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
     return this.http.get<Account>(this.resourceUrl + '/resp/' + email);
